@@ -6,5 +6,19 @@ for generating strings:
         if token isn't in tokens, generate a new string and add it to tokens.
         return tokens[token].
 
-do something special for anything in quotes. backslashes get complicated btw.
-skip lines that have "#" or "//" "/*"
+separate file into tokens
+    types of tokens:
+        word: string of alphabet, numbers, underscores
+        spaces
+        newlines
+        operators
+     
+    special:
+        quotes
+        backslashes
+        #
+        comments
+
+in new file:
+    add the #defines
+    write each translated token
