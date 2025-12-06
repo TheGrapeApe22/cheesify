@@ -1,0 +1,10 @@
+c++ or python??
+
+for generating strings:
+    maintain a hash table tokens {token, cheese string}
+    getCheese(string token)
+        if token isn't in tokens, generate a new string and add it to tokens.
+        return tokens[token].
+
+do something special for anything in quotes. backslashes get complicated btw.
+skip lines that have "#" or "//" "/*"
