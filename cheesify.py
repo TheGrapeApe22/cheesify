@@ -11,12 +11,13 @@ pattern = re.compile(r"""
 (
     \n                  |
     [ ]+                |   # spaces
-    //                  |   # comment
-    /\*|\*/             |   # /* or */
+    //                  |
+    /\*|\*/             |
     "                   |
     '                   |
     \\                  |   # backslash
-    \#                  |   # hash
+    \( | \) | \{ | \} | \[ | \] | ; | # random chars i decided
+    \#                  |   # for #define
     \w+                 |   # alphanumeric + underscore
     [^\s\w"'/\\#]+          # any other symbols (group consecutive ones)
 )
@@ -92,7 +93,8 @@ while i < len(tokens):
         out += '/* cheese */'
     else:
         out += get_cheese(token)
-    out += ' '
+        if (i+1 < len(tokens) and tokens[i+1] not in ['\n', ' ']):
+            out += ' '
     i += 1
 
 print(out)

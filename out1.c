@@ -23,36 +23,33 @@
 #define cHEeSe }
 #define CHEeSe true
 #define cheESe main
-#define CheESe ()
-#define cHeESe 10
-#define CHeESe ))
-#define chEESe printf
-#define ChEESe "%d is a prime number.\n"
-#define cHEESe ,
-#define CHEESe );
-#define cheesE else
-#define CheesE "%d is not a prime number.\n"
+#define CheESe 10
+#define cHeESe printf
+#define CHeESe "%d is a prime number.\n"
+#define chEESe ,
+#define ChEESe else
+#define cHEESe "%d is not a prime number.\n"
 #include <stdio.h>
- #include <stdbool.h>
- 
- cheese   Cheese cHeese CHeese   chEese ChEese   cHEese 
-      CHEese   cHeese chEese   cheEse   CheEse ChEese 
-          cHeEse   CHeEse chEEse 
-      ChEEse   cHeese CHeese   cHEEse   CHEEse   cheeSe chEEse   cHEEse   CheeSe   cHEEse   cheEse   chEese chEEse   cHEEse cHeeSe   cHEese 
-          CHEese   cHeese chEese   CHeeSe   cHEEse   chEeSe   ChEeSe ChEese 
-              cHeEse   CHeEse chEEse 
-      cHEeSe 
-      cHeEse   CHEeSe chEEse 
- cHEeSe 
- 
- CHeese   cheESe CheESe   cHEese 
-      ChEEse   cHeese CHeese   cHEEse   CHEEse   CheEse chEEse   cHEEse   cheEse   cHeESe chEEse   cHEEse cHeeSe   cHEese 
-          CHEese   cHeese Cheese cHeese cHEEse CHeESe   cHEese 
-              chEESe cHeese ChEESe cHEESe   cHEEse CHEESe 
-          cHEeSe   cheesE   cHEese 
-              chEESe cHeese CheesE cHEESe   cHEEse CHEESe 
-          cHEeSe 
-      cHEeSe 
-      cHeEse   ChEeSe chEEse 
- cHEeSe 
- 
+#include <stdbool.h>
+
+cheese Cheese cHeese CHeese chEese ChEese cHEese
+    CHEese cHeese chEese cheEse CheEse ChEese
+        cHeEse CHeEse chEEse
+    ChEEse cHeese CHeese cHEEse CHEEse cheeSe chEEse cHEEse CheeSe cHEEse cheEse chEese chEEse cHEEse cHeeSe cHEese
+        CHEese cHeese chEese CHeeSe cHEEse chEeSe ChEeSe ChEese
+            cHeEse CHeEse chEEse
+    cHEeSe
+    cHeEse CHEeSe chEEse
+cHEeSe
+
+CHeese cheESe cHeese ChEese cHEese
+    ChEEse cHeese CHeese cHEEse CHEEse CheEse chEEse cHEEse cheEse CheESe chEEse cHEEse cHeeSe cHEese
+        CHEese cHeese Cheese cHeese cHEEse ChEese ChEese cHEese
+            cHeESe cHeese CHeESe chEESe cHEEse ChEese chEEse
+        cHEeSe ChEESe cHEese
+            cHeESe cHeese cHEESe chEESe cHEEse ChEese chEEse
+        cHEeSe
+    cHEeSe
+    cHeEse ChEeSe chEEse
+cHEeSe
+
