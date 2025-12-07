@@ -1,9 +1,7 @@
 import re
 
-text = 'hello hi hello\n'
-split_text = re.split(r'(\W+|\w+)', text)
+pattern = r'(//|/\*|\*/|"| +|\n+|\w+|[^ \w\n]+)'
 
-# Filter out empty strings if necessary
-split_text = [part for part in split_text if part]
-
-print(split_text)
+s = "aaa.-a//-=   b"
+tokens = re.findall(pattern, s)
+print(tokens)

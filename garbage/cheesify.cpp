@@ -31,6 +31,41 @@ namespace {
 
 using namespace std;
 
+int tokenCounter = 0;
+unordered_map<string, string> cheeses;
+unordered_set<string> tokensSet;
+
+string generate(int n) {
+    string base = "chee";
+
+    // add e's to the base and adjust n by subtracting 64, 128, etc.
+    int n2 = n;
+    int multiplier = 64;
+    while (1 << (base.size()+2) <= n2) {
+        base += "e";
+        n2 -= multiplier;
+        multiplier *= 2;
+    }
+    base += "se";
+    
+    // bit manipulation
+    string out = "";
+    for (int i = 0; i < (int)base.size(); i++) {
+        if ((n2 >> i) & 1)
+            out += toupper(base[i]);
+        else
+            out += base[i];
+    }
+    return out;
+}
+string getCheese(string token) {
+    if (cheeses.find(token) != cheeses.end())
+        return cheeses[token];
+    cheeses[token] = generate(tokenCounter);
+    tokenCounter++;
+    cout << "#define " << token << " " << cheeses[token] << ln;
+    return cheeses[token];
+}
 
 string readFile(const string& path) {
     ifstream file(path);
@@ -58,13 +93,16 @@ vector<string> split(string text, string delimiter) {
 }
 
 int main() {
-    ofstream out("out2.txt");
-    if (!out.is_open()) {
-        cerr << "error :( could not open output file (cheesify.cpp)" << endl;
-        return 1;
-    }
-
     vector<string> tokens = split(readFile("victim.c"), R"((\n+|\s+|\w+))");
+    for (const string& token : tokens)
+        tokensSet.insert(token);
+    
+    string out = "";
 
-    out.close();
+    for (int i = 0; i < (int)tokens.size(); i++) {
+        const string& token = tokens[i];
+        
+        string cheese = getCheese(token);
+        out += cheese;
+    }
 }

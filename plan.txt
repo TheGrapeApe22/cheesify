@@ -1,10 +1,10 @@
 c++ or python??
 
 for generating strings:
-    maintain a hash table tokens {token, cheese string}
+    maintain a hash table cheeses {token, cheese string}
     getCheese(string token)
-        if token isn't in tokens, generate a new string and add it to tokens.
-        return tokens[token].
+        if token isn't in cheeses, generate a new string and add it to cheeses.
+        return cheeses[token].
 
 separate file into tokens
     types of tokens:

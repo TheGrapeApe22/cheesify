@@ -31,22 +31,15 @@ string generate(int n) {
 string getCheese(string s) {
     if (tokens.find(s) != tokens.end())
         return tokens[s];
-    string cheese = generate(tokenCounter);
+    tokens[s] = generate(tokenCounter);
     tokenCounter++;
+    return tokens[s];
 }
 
 int main() {
-    auto print = [&](int n){
-        cout << generate(n) << endl;
-    };
-    print(0);
-    print(1);
-    print(2);
-    print(63);
-    print(64);
-    print(65);
-    print(63+127);
-    print(63+128);
-    print(63+129);
-    print(63+130);
+    cout << getCheese("hello") << "\n";
+    cout << getCheese("hello") << "\n";
+    cout << getCheese("world") << "\n";
+    cout << getCheese("example") << "\n";
+    cout << getCheese("world") << "\n";
 }
