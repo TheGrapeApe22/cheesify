@@ -1,11 +1,9 @@
-# 12/6/2025
+# 12/6/2025 - 12/7/2025 (6 7)
 import re
 
 # read and parse input
 with open('victim.c', 'r') as file:
     content = file.read()
-
-# content = input(" > ")
 
 pattern = re.compile(r"""
 (
@@ -25,11 +23,13 @@ pattern = re.compile(r"""
 
 tokens = pattern.split(content)
 tokens = [t for t in tokens if t]
-# print(tokens)
 
-cheeses = {}
+# regex done
+
+cheeses = {} # stores {token, cheese string}
 cheese_counter = 0
 
+# generate(1) = "cheese", generate(2) = "Cheese", etc.
 def generate(n):
     base = "chee"
     n2 = n
@@ -50,27 +50,40 @@ def generate(n):
     
     return out
 
+# gets cheese from token, generates if doesn't exist
 def get_cheese(token):
     global cheese_counter
     if token not in cheeses:
         cheeses[token] = generate(cheese_counter)
+        # if a cheese token is already in the code, don't generate it
+        while (cheeses[token] in tokens):
+            cheese_counter += 1
+            cheeses[token] = generate(cheese_counter)
         cheese_counter += 1
-        print("#define {} {}".format(cheeses[token], token))
+        # print define statement
+        print("#define %s %s" % (cheeses[token], token))
     return cheeses[token]
 
+# code containing all the cheese tokens
 out = ""
 
+# loop through tokens
 i = 0
 while i < len(tokens):
     token = tokens[i]
     
+    # count [i...index of s] as a single token
     def goto_next(s):
         global i, token
         while ((i + 1 < len(tokens))):
             i += 1
             token += tokens[i]
+            if (tokens[i] == '\\'):
+                i += 1
+                token += tokens[i]
+                continue
             # stop when found next except when backslash
-            if tokens[i] == s and tokens[i-1] != '\\':
+            if tokens[i] == s:
                 break
     
     if token[0] == '\n' or token[0] == ' ':
@@ -83,16 +96,19 @@ while i < len(tokens):
         goto_next('\n')
     elif token == '/*':
         goto_next('*/')
-    # print(token, end='')
     
+    # don't cheesify these
     if (token[0] == '#' or token == '\n' or token[0] == ' '):
         out += token
-    elif token == '//':
-        out += '// cheese'
-    elif token == '/*':
+    # replace comments
+    elif token[0:2] == '//':
+        out += '// cheese\n'
+    elif token[0:2] == '/*':
         out += '/* cheese */'
+    # cheesify everything else
     else:
         out += get_cheese(token)
+        # add space if next token isn't newline or space
         if (i+1 < len(tokens) and tokens[i+1] not in ['\n', ' ']):
             out += ' '
     i += 1
