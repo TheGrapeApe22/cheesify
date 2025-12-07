@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # 12/6/2025 - 12/7/2025 (6 7)
 import re
 import sys
@@ -122,4 +124,4 @@ while i < len(tokens):
             out += ' '
     i += 1
 
-print(out)
+print(out, end='')

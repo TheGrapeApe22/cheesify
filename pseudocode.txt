@@ -1,5 +1,3 @@
-c++ or python??
-
 for generating strings:
     maintain a hash table cheeses {token, cheese string}
     getCheese(string token)
@@ -22,21 +20,3 @@ separate file into tokens
 in new file:
     add the #defines
     write each translated token
-
-
-
-GPT PROMPT:
-in python i am trying to use re.split() to tokenize.
-
-generate a verbose regex string that separates these in the string:
-newlines
-strings of spaces
-//
-/*
-*/
-"
-'
-\
-#
-alphanumeric characters including underscores (use w)
-strings of any other symbols, after all others have been separated. do not let this eat other tokens.
