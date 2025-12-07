@@ -54,6 +54,7 @@ def get_cheese(token):
     if token not in cheeses:
         cheeses[token] = generate(cheese_counter)
         cheese_counter += 1
+        print("#define {} {}".format(cheeses[token], token))
     return cheeses[token]
 
 out = ""
@@ -81,15 +82,17 @@ while i < len(tokens):
         goto_next('\n')
     elif token == '/*':
         goto_next('*/')
-    print(token, end='')
+    # print(token, end='')
     
-    if (token[0] == '#'):
+    if (token[0] == '#' or token == '\n' or token[0] == ' '):
         out += token
-    elif token[0] == '//':
+    elif token == '//':
         out += '// cheese'
-    elif token[0:2] == '/*':
+    elif token == '/*':
         out += '/* cheese */'
     else:
         out += get_cheese(token)
     out += ' '
     i += 1
+
+print(out)

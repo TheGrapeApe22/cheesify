@@ -15,7 +15,6 @@ int main() {
     for (int i = 1; i <= 10; i++) {
         if (isPrime(i)) {
             printf("%d is a prime number.\n", i);
-            printf("");
         } else {
             printf("%d is not a prime number.\n", i);
         }
