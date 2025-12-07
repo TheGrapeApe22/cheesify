@@ -60,14 +60,11 @@ vector<string> split(string text, string delimiter) {
 int main() {
     ofstream out("out2.txt");
     if (!out.is_open()) {
-        cerr << "error, could not open file" << endl;
+        cerr << "error :( could not open output file (cheesify.cpp)" << endl;
         return 1;
     }
 
-    // parse with regex
-    string text = readFile("victim.c");
-    
-    vector<string> tokens = split(text, R"((\n+|\s+|\w+))");
+    vector<string> tokens = split(readFile("victim.c"), R"((\n+|\s+|\w+))");
 
     out.close();
 }
