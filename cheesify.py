@@ -4,7 +4,7 @@
 import re
 import sys
 
-if len(sys.argv) < 2:
+if len(sys.argv) < 2 || sys.argv[1].size() == 0:
     print("Usage: python3 cheesify.py [input file]")
     exit()
 
