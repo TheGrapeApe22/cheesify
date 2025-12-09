@@ -107,6 +107,13 @@ while i < len(tokens):
         goto_next('\n')
     elif token == '/*':
         goto_next('*/')
+    elif token.isdigit():
+        if (i + 1 < len(tokens) and tokens[i + 1] == '.'):
+            token += tokens[i + 1]
+            i += 1
+            if (i + 1 < len(tokens) and tokens[i + 1].isdigit()):
+                token += tokens[i + 1]
+                i += 1
     
     # don't cheesify these
     if (token[0] == '#' or token == '\n' or token[0] == ' '):
