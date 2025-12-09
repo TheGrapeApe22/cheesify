@@ -19,16 +19,16 @@ except (Exception) as e:
 pattern = re.compile(r"""
 (
     \n                  |
-    [ ]+                |   # spaces
+    [ ]+                | # strings of spaces
     //                  |
     /\*|\*/             |
     "                   |
     '                   |
-    \\                  |   # backslash
-    \( | \) | \{ | \} | \[ | \] | ; | # random chars i decided
-    \#                  |   # for #define
-    \w+                 |   # alphanumeric + underscore
-    [^\s\w"'/\\#]+          # any other symbols (group consecutive ones)
+    \\                  | # backslash
+    \( | \) | \{ | \} | \[ | \] | ; | ++ | -- | # common individual operators
+    \#                  | # for preprocessor macros
+    \w+                 | # letters, digits, underscores
+    [^\s\w"'/\\#]+        # any other symbols (group consecutive ones)
 )
 """, re.VERBOSE)
 
@@ -116,7 +116,9 @@ while i < len(tokens):
                 i += 1
     
     # don't cheesify these
-    if (token[0] == '#' or token == '\n' or token[0] == ' '):
+    if (token[0] == '#'):
+        print(token, end='')
+    elif token[0] == '\n' or token[0] == ' ':
         out += token
     # replace comments
     elif token[0:2] == '//':
