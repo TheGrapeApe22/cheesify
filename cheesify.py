@@ -18,17 +18,17 @@ except (Exception) as e:
 
 pattern = re.compile(r"""
 (
-    \n                  |
-    [ ]+                | # strings of spaces
-    //                  |
-    /\*|\*/             |
-    "                   |
-    '                   |
-    \\                  | # backslash
-    \( | \) | \{ | \} | \[ | \] | ; | ++ | -- | # common individual operators
-    \#                  | # for preprocessor macros
-    \w+                 | # letters, digits, underscores
-    [^\s\w"'/\\#]+        # any other symbols (group consecutive ones)
+    \n                      |  # newline
+    [ ]+                    |  # strings of spaces
+    //                      |  # single-line comment
+    /\*|\*/                 |  # block comment start or end
+    "                        |  # double quote
+    '                        |  # single quote
+    \\                       |  # backslash
+    \( | \) | \{ | \} | \[ | \] | ; | \+\+ | -- |  # common individual operators
+    \#                       |  # for preprocessor macros
+    \w+                      |  # word characters (letters, digits, underscores)
+    [^\s\w"'/\\#]+           # any other symbols (group consecutive ones)
 )
 """, re.VERBOSE)
 
